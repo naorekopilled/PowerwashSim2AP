@@ -114,8 +114,6 @@ At least one `enable_*sanity` must be on. Archipelago reserves the word `random`
 
 ## Known Issues
 
-- Objectsanity, Stagesanity, Bonustasksanity, both goals, `$WashCoin` and reconnecting mid-run haven't been played in-game yet. Their logic is
-  covered by the APWorld tests, and seeds generate with each of them
 - The randomizer can't use a separate save, because PWS2 creates its save storage before MelonLoader starts mods. That's also why there is no shopsanity
 - Free Play job tiles show 0% progress
 - The hub map pins still show, they just can't be selected
