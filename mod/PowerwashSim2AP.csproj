@@ -1,0 +1,38 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net6.0</TargetFramework>
+        <AssemblyName>PowerwashSim2AP</AssemblyName>
+        <RootNamespace>PowerwashSim2AP</RootNamespace>
+        <Version>0.1.0</Version>
+        <LangVersion>latest</LangVersion>
+        <Nullable>disable</Nullable>
+        <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+        <GenerateDocumentationFile>false</GenerateDocumentationFile>
+        <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+        <!-- override with -p:GamePath=... on Windows or other Steam libraries -->
+        <GamePath Condition="'$(GamePath)' == ''">$(HOME)/.local/share/Steam/steamapps/common/PowerWash Simulator 2</GamePath>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <Reference Include="$(GamePath)/MelonLoader/net6/MelonLoader.dll" Private="false" />
+        <Reference Include="$(GamePath)/MelonLoader/net6/0Harmony.dll" Private="false" />
+        <Reference Include="$(GamePath)/MelonLoader/net6/Il2CppInterop.Runtime.dll" Private="false" />
+        <Reference Include="$(GamePath)/MelonLoader/net6/Il2CppInterop.Common.dll" Private="false" />
+        <Reference Include="$(GamePath)/MelonLoader/Il2CppAssemblies/*.dll" Private="false" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Archipelago.MultiClient.Net" Version="6.7.1" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <EmbeddedResource Include="Resources/ap_data.json" LogicalName="ap_data.json" />
+    </ItemGroup>
+
+    <Target Name="CopyToMods" AfterTargets="Build">
+        <Copy SourceFiles="$(TargetPath)" DestinationFolder="$(GamePath)/Mods" />
+        <!-- Newtonsoft.Json is not copied: MelonLoader ships it -->
+        <Copy SourceFiles="$(OutDir)Archipelago.MultiClient.Net.dll" DestinationFolder="$(GamePath)/UserLibs" />
+    </Target>
+</Project>

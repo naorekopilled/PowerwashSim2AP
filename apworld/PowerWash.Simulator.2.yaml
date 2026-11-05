@@ -1,0 +1,286 @@
+﻿# Q. What is this file?
+# A. This file contains options which allow you to configure your multiworld experience while allowing
+#    others to play how they want as well.
+#
+# Q. How do I use it?
+# A. The options in this file are weighted. This means the higher number you assign to a value, the
+#    more chances you have for that option to be chosen. For example, an option like this:
+#
+#    map_shuffle:
+#      on: 5
+#      off: 15
+#
+#    Means you have 5 chances for map shuffle to occur, and 15 chances for map shuffle to be turned
+#    off.
+#
+# Q. I've never seen a file like this before. What characters am I allowed to use?
+# A. This is a .yaml file. You are allowed to use most characters.
+#    To test if your yaml is valid or not, you can use this website:
+#        http://www.yamllint.com/
+#    You can also verify that your Archipelago options are valid at this site:
+#        https://archipelago.gg/check
+
+# Your name in-game, limited to 16 characters.
+#     {player} will be replaced with the player's slot number.
+#     {PLAYER} will be replaced with the player's slot number, if that slot number is greater than 1.
+#     {number} will be replaced with the counter value of the name.
+#     {NUMBER} will be replaced with the counter value of the name, if the counter value is greater than 1.
+name: Player{number}
+
+# Used to describe your yaml. Useful if you have multiple files.
+description: Default PowerWash Simulator 2 Template
+
+game: PowerWash Simulator 2
+requires:
+  version: 0.6.8 # Version of Archipelago required for this yaml to work as expected.
+  game:
+    PowerWash Simulator 2: 0.1.0 # Version of the world required for this yaml to work as expected.
+
+PowerWash Simulator 2:
+  ################
+  # Game Options #
+  ################
+  progression_balancing:
+    # A system that can move progression earlier, to try and prevent the player from getting stuck and bored early.
+    # 
+    # A lower setting means more getting stuck. A higher setting means less getting stuck.
+    #
+    # You can define additional values between the minimum and maximum values.
+    # Minimum value is 0
+    # Maximum value is 99
+    random: 0
+    random-low: 0 # random value weighted towards lower values
+    random-high: 0 # random value weighted towards higher values
+    random-range-0-99: 0 # random value between 0 and 99
+    disabled: 0 # equivalent to 0
+    normal: 50 # equivalent to 50
+    extreme: 0 # equivalent to 99
+
+  accessibility:
+    # Set rules for reachability of your items/locations.
+    # 
+    # **Full:** ensure everything can be reached and acquired.
+    # 
+    # **Minimal:** ensure what is needed to reach your goal can be acquired.
+    full: 50
+    minimal: 0
+
+  start_with_first_job:
+    # Start with the campaign's first job as the starting level instead of a random one
+    'false': 50
+    'true': 0
+
+  land_vehicles:
+    # Locations:
+    # ['Removals Van', 'Dog Car', 'Road Sweeper', 'Mobility Scooter', 'Cement Mixer', 'Tractor', 'Car & Trailer', 'Streetcar', 'Mining Dump Truck', 'Extra Long Limo', 'Futuristic Bike', '18 Wheeler', 'Town Floats']
+    # "All" - adds all locations above
+    ['All']
+
+  water_vehicles:
+    # Locations:
+    # []
+    # "All" - adds all locations above
+    ['All']
+
+  air_vehicles:
+    # Locations:
+    # ['Airship']
+    # "All" - adds all locations above
+    ['All']
+
+  places:
+    # Locations:
+    # ['Public Facility', 'Campsite', 'Art Deco House', 'Billboard', 'Teapot Tea Room', 'Shooting Gallery', 'Gas Station', 'Bandstand', 'Nouveau House', 'Farm', 'Stone Circle', 'Rock Climbing Park', 'Roller Disco', 'Temple Interior', 'Theater', 'Motel', 'Mini Roller Coaster', 'Solar System Exhibit', 'Salvage House', 'Fun House', 'Ski Center', 'Shopping Mall', 'Theater Sets', 'Mount Rushless']
+    # "All" - adds all locations above
+    ['All']
+
+  bonus_jobs:
+    # Add the Caldera Chronicles bonus jobs (which ones: `bonus_jobs_levels`)
+    'false': 50
+    'true': 0
+
+  bonus_jobs_levels:
+    # Only used with `bonus_jobs: true`
+    # Locations:
+    # ['Bouncy Castle', 'Bowling Alley', 'Miniature Village']
+    # "All" - adds all locations above
+    ['All']
+
+  adventure_time_dlc:
+    # DISCLAIMER: YOU NEED TO HAVE BOUGHT THIS DLC TO PLAY IT
+    # Add the Adventure Time DLC jobs (which ones: `adventure_time_dlc_levels`)
+    'false': 50
+    'true': 0
+
+  adventure_time_dlc_levels:
+    # Only used with `adventure_time_dlc: true`
+    # Locations:
+    # ['Candy Kingdom Vehicles', "Ice King's Castle", 'Tree House Living Room', "Pizza Sassy's", "Finn & Jake's Tree House"]
+    # "All" - adds all locations above
+    ['All']
+
+  star_wars_dlc:
+    # DISCLAIMER: YOU NEED TO HAVE BOUGHT THIS DLC TO PLAY IT
+    # Add the Star Wars DLC jobs (which ones: `star_wars_dlc_levels`)
+    'false': 50
+    'true': 0
+
+  star_wars_dlc_levels:
+    # Only used with `star_wars_dlc: true`
+    # Locations:
+    # ['Lars Homestead', 'Mos Eisley Cantina', 'AT-AT', 'Super Star Destroyer Bridge', 'X-wing Fighter', 'Millennium Falcon']
+    # "All" - adds all locations above
+    ['All']
+
+  enable_percentsanity:
+    # Every `percentsanity` % total cleaned of a level is a check
+    # At least one sanity must be enabled
+    'false': 0
+    'true': 50
+
+  percentsanity:
+    # What intervals of cleaned % to have checks at
+    # 
+    # default 20: checks at 20%, 40%, 60%, 80%, and 100%
+    # host yaml setting `allow_percentsanity_below_7` (off by default) will allow % below 7%
+    #
+    # You can define additional values between the minimum and maximum values.
+    # Minimum value is 1
+    # Maximum value is 20
+    20: 50
+    random: 0
+    random-low: 0 # random value weighted towards lower values
+    random-high: 0 # random value weighted towards higher values
+    random-range-1-20: 0 # random value between 1 and 20
+
+  enable_objectsanity:
+    # Each part of a cleanable object is a check
+    # Can only be enabled if the host has `allow_objectsanity` enabled in their host.yaml
+    'false': 50
+    'true': 0
+
+  enable_stagesanity:
+    # Each finished stage of a level is a check
+    # On its own this only has enough checks for `goal_type: level`
+    'false': 50
+    'true': 0
+
+  enable_bonustasksanity:
+    # Each bonus task of a level is a check (7 in the whole game), so another sanity is needed alongside it
+    'false': 50
+    'true': 0
+
+  local_fill:
+    # Minimums:
+    #     - Percentsanity or Objectsanity: 55%
+    #     - Percentsanity and Objectsanity: 97%
+    # 
+    # the host yaml setting `allow_below_localfill_minimums` will allow for local fill to go below the minimums
+    #
+    # You can define additional values between the minimum and maximum values.
+    # Minimum value is 0
+    # Maximum value is 100
+    55: 50
+    random: 0
+    random-low: 0 # random value weighted towards lower values
+    random-high: 0 # random value weighted towards higher values
+    random-range-0-100: 0 # random value between 0 and 100
+
+  goal_type:
+    # What is required to goal?
+    # 0 = mcguffin hunt (find a certain amount of `A Job Well Done`s to goal)
+    # 1 = level hunt (complete levels to goal)
+    mcguffin: 50
+    level: 0
+
+  levels_to_goal:
+    # Which levels can be beaten to goal (level hunt only)
+    # randomized: a random half or more of your enabled levels
+    # all: every enabled level
+    # custom: the levels in `custom_levels_to_goal`
+    randomized: 50
+    all: 0
+    custom: 0
+
+  custom_levels_to_goal:
+    # Only used with `levels_to_goal: custom`. Levels that aren't enabled are ignored
+    []
+
+  amount_of_levels_to_goal:
+    # How many of the goal levels must be beaten (level hunt only)
+    # randomized: between 50% of your enabled levels and all goal levels
+    # custom: `custom_amount_of_levels_to_goal`
+    randomized: 50
+    custom: 0
+
+  custom_amount_of_levels_to_goal:
+    # Only used with `amount_of_levels_to_goal: custom`. More than there are goal levels means all of them
+    # It must be at least 50% of your enabled levels; the host setting `allow_potentially_excessive_releases` disables this
+    #
+    # You can define additional values between the minimum and maximum values.
+    # Minimum value is 1
+    # Maximum value is 52
+    20: 50
+    random: 0
+    random-low: 0 # random value weighted towards lower values
+    random-high: 0 # random value weighted towards higher values
+    random-range-1-52: 0 # random value between 1 and 52
+
+  amount_of_mcguffins_to_goal:
+    # How many `A Job Well Done`s are needed to goal (mcguffin hunt only)
+    # automatic: as PWS1, 5% of your checks but at least one per enabled level
+    # custom: `custom_amount_of_mcguffins_to_goal`
+    automatic: 50
+    custom: 0
+
+  custom_amount_of_mcguffins_to_goal:
+    # Only used with `amount_of_mcguffins_to_goal: custom`
+    # If this is more than the pool would hold, more `A Job Well Done`s are added; they must still fit in your checks
+    #
+    # You can define additional values between the minimum and maximum values.
+    # Minimum value is 1
+    # Maximum value is 100
+    30: 50
+    random: 0
+    random-low: 0 # random value weighted towards lower values
+    random-high: 0 # random value weighted towards higher values
+    random-range-1-100: 0 # random value between 1 and 100
+
+  ###########################
+  # Item & Location Options #
+  ###########################
+  local_items:
+    # Forces these items to be in their native world.
+    []
+
+  non_local_items:
+    # Forces these items to be outside their native world.
+    []
+
+  start_inventory:
+    # Start with the specified amount of these items. Example: {Bomb: 1, Arrow: 3}
+    {}
+
+  start_hints:
+    # Start with these item's locations prefilled into the ``!hint`` command.
+    []
+
+  start_location_hints:
+    # Start with these locations and their item prefilled into the ``!hint`` command.
+    []
+
+  exclude_locations:
+    # Prevent these locations from having an important item.
+    []
+
+  priority_locations:
+    # Prevent these locations from having an unimportant item.
+    []
+
+  item_links:
+    # Share part of your item pool with other players.
+    []
+
+  plando_items:
+    # Generic items plando.
+    []

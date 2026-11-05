@@ -1,0 +1,6 @@
+.cache/
+mod/bin/
+mod/obj/
+__pycache__/
+*.pyc
+apworld/dist/
